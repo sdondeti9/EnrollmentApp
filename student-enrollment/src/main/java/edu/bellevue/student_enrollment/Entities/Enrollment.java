@@ -1,4 +1,4 @@
-package edu.bellevue.student_enrollment.Entities;
+package edu.bellevue.student_enrollment.entities;
 
 
 import jakarta.persistence.Entity;

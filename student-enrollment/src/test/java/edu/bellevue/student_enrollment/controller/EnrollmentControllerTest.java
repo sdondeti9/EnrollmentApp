@@ -15,22 +15,22 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
-import edu.bellevue.student_enrollment.Controller.EnrollmentController;
-import edu.bellevue.student_enrollment.DTO.EnrollmentDTO;
-import edu.bellevue.student_enrollment.Service.EnrollmentService;
+
+import edu.bellevue.student_enrollment.dto.EnrollmentDTO;
+import edu.bellevue.student_enrollment.service.EnrollmentService;
 
 @WebMvcTest(controllers = EnrollmentController.class) // ✅ Correct Controller
-public class EnrollmentControllerTest {
+class EnrollmentControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
+    
     @MockBean
     private EnrollmentService enrollmentService;
 
-    @Test
+    @Test 
     void testGetEnrollmentInfo_Success() throws Exception {
-        
+       
    EnrollmentDTO enrollment1 = new EnrollmentDTO(
             "John Doe", 
             "Math", 
@@ -44,7 +44,7 @@ public class EnrollmentControllerTest {
 
         when(enrollmentService.getAllEnrollmentInfo()).thenReturn(Arrays.asList(enrollment1, enrollment2));
 
-        mockMvc.perform(get("/info"))
+        mockMvc.perform(get("/api/enrollments/info")) // ✅ Updated to match the correct endpoint
                .andExpect(status().isOk());
     }
 
@@ -52,7 +52,7 @@ public class EnrollmentControllerTest {
     void testGetEnrollmentInfo_NoDataFound() throws Exception {
         when(enrollmentService.getAllEnrollmentInfo()).thenReturn(Collections.emptyList());
 
-        mockMvc.perform(get("/info"))
+        mockMvc.perform(get("/api/enrollments/info"))
                .andExpect(status().isNotFound());
     }
 }

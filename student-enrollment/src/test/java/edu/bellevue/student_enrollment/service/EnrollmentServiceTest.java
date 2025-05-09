@@ -10,10 +10,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import edu.bellevue.student_enrollment.DTO.EnrollmentDTO;
-import edu.bellevue.student_enrollment.Exception.EnrollmentNotFoundException;
-import edu.bellevue.student_enrollment.Repository.EnrollmentRepository;
-import edu.bellevue.student_enrollment.Service.EnrollmentService;
+import edu.bellevue.student_enrollment.dto.EnrollmentDTO;
+import edu.bellevue.student_enrollment.exception.EnrollmentNotFoundException;
+import edu.bellevue.student_enrollment.repository.EnrollmentRepository;
+
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

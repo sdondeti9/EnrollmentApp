@@ -1,4 +1,4 @@
-package edu.bellevue.student_enrollment.Exception;
+package edu.bellevue.student_enrollment.exception;
 
 
 

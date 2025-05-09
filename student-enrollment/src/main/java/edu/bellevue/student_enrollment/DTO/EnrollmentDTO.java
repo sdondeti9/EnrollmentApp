@@ -1,4 +1,4 @@
-package edu.bellevue.student_enrollment.DTO;
+package edu.bellevue.student_enrollment.dto;
 
 import java.time.LocalDateTime;
 

@@ -1,22 +1,23 @@
-package edu.bellevue.student_enrollment.Service;
+package edu.bellevue.student_enrollment.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.bellevue.student_enrollment.DTO.EnrollmentDTO;
-import edu.bellevue.student_enrollment.Repository.EnrollmentRepository;
-
-import edu.bellevue.student_enrollment.Exception.EnrollmentNotFoundException;
-
+import edu.bellevue.student_enrollment.dto.EnrollmentDTO;
+import edu.bellevue.student_enrollment.repository.EnrollmentRepository;
+import edu.bellevue.student_enrollment.exception.EnrollmentNotFoundException;
 import org.springframework.dao.DataAccessException; 
+import edu.bellevue.student_enrollment.exception.DatabaseException;
 
 @Service
 public class EnrollmentService {
 
-    @Autowired
-    private EnrollmentRepository enrollmentRepository;
+    private final EnrollmentRepository enrollmentRepository;
+
+    public EnrollmentService(EnrollmentRepository enrollmentRepository) {
+        this.enrollmentRepository = enrollmentRepository;
+    }
 
     public List<EnrollmentDTO> getAllEnrollmentInfo() {
         try {
@@ -29,7 +30,7 @@ public class EnrollmentService {
 
         } catch (DataAccessException dae) {
             // Log the exception here if you have a logger
-            throw new RuntimeException("Database error occurred while fetching enrollment information.", dae);
+            throw new DatabaseException("Database error occurred while fetching enrollment information.", dae);
         }
     }
 }
