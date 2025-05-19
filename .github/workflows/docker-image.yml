@@ -34,8 +34,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/student-enrollment:latest ./student-enrollment
+          docker build -t sdondeti9/student-enrollment:latest ./student-enrollment
 
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/student-enrollment:latest
+          docker push sdondeti9/student-enrollment:latest
